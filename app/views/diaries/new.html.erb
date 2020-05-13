@@ -1,0 +1,10 @@
+<div class="contents row">
+  <%= form_tag('/diaries', method: :post) do %>
+    <h3>作成する</h3>
+    <textarea name="philosophy" placeholder="理念"></textarea>
+    <textarea name="KPI" placeholder="あなたの理念に基づく目標"></textarea>
+    <textarea name="text1" placeholder="そのためにしたこと"></textarea>
+    <textarea name="text2" placeholder="もっと良くするために明日何する"></textarea>
+    <input type="submit" value="SEND">
+  <% end %>
+</div>

@@ -1,1 +1,11 @@
-<p>Hello World!</p>
+<div class="contents row" >
+  <% @diaries.each do |diary| %>
+      <%= simple_format(diary.philosophy) %>
+      <%= simple_format(diary.KPI) %>
+      <%= simple_format(diary.text) %>
+      <%= simple_format(diary.text2) %>
+      <%= simple_format(diary.philosophy) %>
+     
+    <
+  <% end %>
+</div>

@@ -4,21 +4,39 @@
     <title>Motivate</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header class="header">
+      <div class="header__bar row">
+        <h1 class="grid-6"><a href="/">Motivate</a></h1>
+        <% if user_signed_in? %>
+          <div class="user_nav grid-6">
+            <span>
+              <ul class="user__info">
+                <li>
+                  <a href="/users/<%= current_user.id %>">My page</a>
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                </li>
+              </ul>
+            </span>
+            <a class="post" href="diaries/new">新しく作成</a>
+          </div>
+        <% else %>
+        <div class="grid-6">
+          <%= link_to "ログイン", new_user_session_path, class: 'post' %>
+          <%= link_to "新規登録", new_user_registration_path, class: 'post' %>
+        </div>
+      <% end %>
+      </div>
     </header>
   
-    <section class="about" id="about">
-    </section>
     <%= yield %>
   
-    <footer class="footer" id="contact">
-    </section>
-    
+    <footer class="footer" >
+      <p>Selfcounseling</p>
+    </footer>
   </body>
 </html>

@@ -17,7 +17,7 @@
             <span>
               <ul class="user__info">
                 <li>
-                  <a href="/users/<%= current_user.id %>">My page</a>
+                  <%= link_to "My page", "/users/#{current_user.id}" %>
                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
                 </li>
               </ul>

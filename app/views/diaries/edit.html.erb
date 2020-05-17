@@ -1,0 +1,13 @@
+<div class="contents row">
+  <%= form_tag("/diaries/#{@diary.id}", method: :patch ) do %>
+    <h3>
+      編集する
+    </h3>
+    <textarea name="philosophy" placeholder="理念" rows="10" cols="30"><%= @diary.philosophy %></textarea>
+    <textarea name="KPI" placeholder="あなたの理念に基づく目標" rows="10" cols="30"><%= @diary.KPI %></textarea>
+    <textarea name="text1" placeholder="そのためにしたこと" rows="10" cols="30"><%= @diary.text1 %></textarea>
+    <textarea name="text2" placeholder="もっと良くするために明日何する" rows="10" cols="30"><%= @diary.text2 %></textarea>
+    <input type="submit" value="SENT">
+  <% end %>
+</div>
+

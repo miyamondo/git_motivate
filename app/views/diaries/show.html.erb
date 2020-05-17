@@ -1,0 +1,45 @@
+<div class="contents row">
+  <div class="content_post" >
+    <% if user_signed_in? && current_user.id == @diary.user_id %>
+      <div class="more">
+        <ul class="more_list">
+          <li>
+            <%= link_to "編集", "/diaries/#{@diary.id}/edit", method: :get %>
+          </li>
+          <li>
+            <%= link_to "削除", "/diaries/#{@diary.id}", method: :delete %>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+    
+      <span>理念</span><%= simple_format(@diary.philosophy) %>
+      <span>KPI</span><%= simple_format(@diary.KPI) %>
+      <span>そのために何をした？</span><%= simple_format(@diary.text1) %>
+      <span>もっと良くするために次は何をする</span><%= simple_format(@diary.text2) %>
+      <span class="name">
+        <%= link_to "My page", "/users/#{current_user.id}" %>
+      </span>
+  </div>
+  
+  <div class="container">
+    <% if current_user %>
+      <%= form_tag("/diaries/#{@diary.id}/comments", method: :post) do %>
+      <textarea name="text" placeholder="コメントする"　rows="2" cols="30"></textarea>
+      <input type="submit" value="SENT">
+      <% end %>
+    <% end %>
+    
+    <div class="comments">
+      <h4><コメント一覧></h4>
+      <% if @comments %>
+        <% @comments.each do |comment| %>
+        <p>
+          <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+          <%= comment.text %>
+        </p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

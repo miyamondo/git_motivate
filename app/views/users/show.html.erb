@@ -1,0 +1,13 @@
+<div class="contents row">
+  <p><%= @nickname %>さんの投稿一覧</p>
+  <% @diaries.each do |diary| %>
+    <div class="content_post">
+  　   <%= simple_format(diary.philosophy) %>
+      <%= simple_format(diary.KPI) %>
+      <%= simple_format(diary.text1) %>
+      <%= simple_format(diary.text2) %>
+      <%= simple_format(diary.philosophy) %>
+    </div>
+  <% end %>
+  <%= paginate(@diaries)%>
+</div>

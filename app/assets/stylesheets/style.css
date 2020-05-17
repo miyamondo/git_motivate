@@ -1,0 +1,36 @@
+/*ヘッダー*/
+header.header {
+  height:90px;
+  border:2px soled ;
+  background-color: #383634;
+  
+}
+
+h1.grid-6 {
+  font-size: 30px;
+  float: left;
+  border: 1px solid;
+}
+
+a {
+    text-decoration:none;
+    color:#C0C0C0;
+}
+
+div.grid-6 {
+  float: right;
+  border: 1px solid;
+  line-height: 40px;
+  margin:20px;
+}
+
+
+/*フッター*/
+footer.footer {
+  background-color: #383634;
+  height: 90px;
+}
+
+footer p{
+  color: #FFF;
+}

@@ -1,11 +1,29 @@
 <div class="contents row" >
   <% @diaries.each do |diary| %>
-      <%= simple_format(diary.philosophy) %>
+  　<div class="contents_post">
+  　 
+  　 <div class="more">
+       <ul class="more_list">
+         <li>
+           <%= link_to "詳細", "/diaries/#{diary.id}", method: :get %>
+         </li>
+     <% if user_signed_in? && current_user.id == diary.user_id %>
+         <li>
+           <%= link_to "編集", "/diaries/#{diary.id}/edit", method: :get %>
+         </li>
+         <li>
+           <%= link_to "削除", "/diaries/#{diary.id}", method: :delete %>
+         </li>
+       </ul>
+  　 </div>
+  　 <% end %> 
+  　   <%= simple_format(diary.philosophy) %>
       <%= simple_format(diary.KPI) %>
-      <%= simple_format(diary.text) %>
+      <%= simple_format(diary.text1) %>
       <%= simple_format(diary.text2) %>
       <%= simple_format(diary.philosophy) %>
-     
-    
+   
+  　</div>
   <% end %>
+  <%= paginate(@diaries) %>
 </div>

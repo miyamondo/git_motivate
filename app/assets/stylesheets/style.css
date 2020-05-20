@@ -76,18 +76,37 @@ a:link, a:visited, a:hover, a:active {
   display: block;
   clear: both;
 }
-
+/*メイン投稿一覧画面*/
 .main {
   display: block;
   float: left;
   width: 660px;
 }
+
+.hot-topic {
+  display: block;
+  height: 300px;
+  margin-bottom: 30px;
+  box-shadow: 0 6px 4px -4px rgba(0, 0, 0, 0.15);
+  transition: opacity 0 15s;
+}
+
+.hot-topic:hover {
+  opacity: 0.85;
+}
+
+
+
 .sidemenu {
   float: right;
   width: 275px;
 }
 .footer {
   width: 100%;
+}
+
+.hidden {
+  display: none;
 }
 
 

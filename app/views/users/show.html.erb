@@ -1,13 +1,24 @@
-<div class="contents row">
-  <p><%= @nickname %>さんの投稿一覧</p>
-  <% @diaries.each do |diary| %>
-    <div class="content_post">
-  　   <%= simple_format(diary.philosophy) %>
-      <%= simple_format(diary.KPI) %>
-      <%= simple_format(diary.text1) %>
-      <%= simple_format(diary.text2) %>
-      <%= simple_format(diary.philosophy) %>
-    </div>
-  <% end %>
+<div class="row form user_profile">
+  <div class="col-lg-12">
+    <div class="image" style="background-image: url(%= rails_blob_path(@user.image) %>)"></div>
+    <h2><%= @user.nickname %></h2>
+    <% if current_user.id == @user.id %>
+        <div class="profile_edit">
+          <%= link_to "プロフィール編集", edit_user_path(current_user) %>
+        </div>
+    <% end %>
+      <p><%= @nickname %>さんの投稿一覧</p>
+      <% @diaries.each do |diary| %>
+        <div class="content_post">
+      　   <%= simple_format(diary.philosophy) %>
+          <%= simple_format(diary.KPI) %>
+          <%= simple_format(diary.text1) %>
+          <%= simple_format(diary.text2) %>
+          <%= simple_format(diary.philosophy) %>
+        </div>
+      <% end %>
+  </div>
+  
+  
   <%= paginate(@diaries)%>
 </div>

@@ -36,6 +36,7 @@ class DiariesController < ApplicationController
     @comments = @diary.comments.includes(:user)
   end
   
+  
   private
   def diary_params
     params.permit(:philosophy, :KPI, :text1, :text2)

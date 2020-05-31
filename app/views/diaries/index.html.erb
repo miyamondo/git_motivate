@@ -5,30 +5,66 @@
       <main class="main">
         <h2 class="hidden">HOT TOPIC</h2>
         <a href="#" class="hot-topic clearfix">
-          <img class="image" src="assets/hot-topic.jpg" alt=”コンテンツの写真”>
+          <img class="image" src="assets/sucsess" alt=”コンテンツの写真”>
           <div class="content">
-            <h3 class="title">実務で使えるHTML/CSS<br>モダンコーディングTIPS</h3>
-            <p class="desc">webフロントエンドの進化の勢いは留まることを知りません。新しい要素が増えて大幅に表現が広がったHTML5を活用</p>
-            <time class="date" detetime="2015-09-01">2015.09.01 TUE</time>
+            <h3 class="title">あなたの日々の努力をシェア！<br>仲間を作って継続学習</h3>
+            <p class="desc">あなただけの人生の目的を達成しよう</p>
+            <time class="date" ><%= simple_time(Time.current) %></time>
           </div>
         </a>
         
         <h2 class="heading">Daily report</h2>
         <% @diaries.each do |diary| %>
         
-        <ul class="scroll-list">
-          <li class="scroll-item">
-            <a href="#">
-             <time class="date"><%= simple_time(diary.created_at) %></time>
-             <%= simple_format(diary.philosophy) %>
-          </li>
-        </ul>
-        <% end %>
+          <div class="post_diarry">
+            <header class="sub-hedder">
+              <ul class="post-headding">
+                <li><%= simple_time(diary.created_at) %></li>
+                <li><%= diary.user.nickname %></li>
+              </ul>
+             <% if user_signed_in? && current_user.id == diary.user_id %>
+            　 <!--<div class="more">-->
+                 <ul class="more_list">
+                   <li>
+                     <%= link_to "詳細", "/diaries/#{diary.id}", method: :get %>
+                   </li>
+                   <li>
+                     <%= link_to "編集", "/diaries/#{diary.id}/edit", method: :get %>
+                   </li>
+                   <li>
+                     <%= link_to "削除", "/diaries/#{diary.id}", method: :delete %>
+                   </li>
+                 </ul>
+            　 <!--</div>-->
+            　<% end %>
+            </header>
+           
+            <div class="list">
+              <p>人生の理念</p>
+              <div class="post_philosophy">
+                <%= simple_format(diary.philosophy) %>
+              </div>
+              <p>あなたの大事な目標</p>
+              <div class="post_KPI">
+                <%= simple_format(diary.KPI) %>
+              </div>
+               <p>その目標を達成するために何をした</p>
+              <div class="for">
+                <%= simple_format(diary.text1) %>
+              </div>
+              <p>明日もっと良くするために何をする</p>
+              <div class="improvement">
+                <%= simple_format(diary.text2) %>
+              </div>
+            </div>
+          </div>
+        <% end %> <!--eachの終わり-->
+        <%= paginate(@diaries) %>-
       </main>
 
 <!--サイドメニュー-->
       <div class="sidemenu">
-        <h2 class="heading">KPI</h2>
+        <h2 class="heading">Genre</h2>
         <ol class="ranking">
           <li class="ranking-item">
             <a href="#">
@@ -79,47 +115,10 @@
           </li>
         </ul>
         
-        <!--検索フォーム-->
-        <h2 class="hidden">SEARCH</h2>
-        <form class="search-box">
-          <input class="serch-input" type="text" name="search" placeholder="SERCH">
-          <input class="search-button" type="submit" value="検索">
-          <p class="text">検索できます</p>
-        </form>
-        
       </div>
       
     </div>
 
-<!--↑ビューのメインとサイド部分-->
 
+<!-- 
 
-<!--<div class="contents row" >-->
-<!--  <% @diaries.each do |diary| %>-->
-<!--  　<div class="contents_post">-->
-  　 
-<!--  　 <div class="more">-->
-<!--       <ul class="more_list">-->
-<!--         <li>-->
-<!--           <%= link_to "詳細", "/diaries/#{diary.id}", method: :get %>-->
-<!--         </li>-->
-<!--     <% if user_signed_in? && current_user.id == diary.user_id %>-->
-<!--         <li>-->
-<!--           <%= link_to "編集", "/diaries/#{diary.id}/edit", method: :get %>-->
-<!--         </li>-->
-<!--         <li>-->
-<!--           <%= link_to "削除", "/diaries/#{diary.id}", method: :delete %>-->
-<!--         </li>-->
-<!--       </ul>-->
-<!--  　 </div>-->
-<!--  　 <% end %> -->
-<!--  　   <%= simple_format(diary.philosophy) %>-->
-<!--      <%= simple_format(diary.KPI) %>-->
-<!--      <%= simple_format(diary.text1) %>-->
-<!--      <%= simple_format(diary.text2) %>-->
-<!--      -->
-   
-<!--  　</div>-->
-<!--  <% end %>-->
-<!--  <%= paginate(@diaries) %>-->
-<!--</div>-->

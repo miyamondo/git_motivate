@@ -1,0 +1,16 @@
+<div class="row form genre">
+  <div class="col-lg-12">
+
+      <% @genres.each do |genre| %>
+        <div class="content_post">
+      　   <%= simple_format(genre.philosophy) %>
+          <%= simple_format(genre.KPI) %>
+          <%= simple_format(genre.text1) %>
+          <%= simple_format(genre.text2) %>
+          <%= simple_format(genre.philosophy) %>
+        </div>
+      <% end %>
+  </div>
+  
+
+</div>

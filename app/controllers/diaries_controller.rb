@@ -1,10 +1,19 @@
 class DiariesController < ApplicationController
   
-  before_action :move_to_index, except: [:index, :show]
+  before_action :move_to_index, except: [:index, :show, :new_guest]
+  
+  def new_guest
+    user = User.find_or_create_by!(email: "guest@example.com") do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+    sign_in user
+    redirect_to root_path, notice: "ゲストユーザーとしてログインしました"
+  end
   
   def index
     @diaries = Diary.all.order("created_at DESC").page(params[:page]).per(5)
     @genre = Genre.all
+   
   end
   
   def new
@@ -35,6 +44,7 @@ class DiariesController < ApplicationController
   def show
     @diary = Diary.find(params[:id])
     @comments = @diary.comments.includes(:user)
+    @task = Task.find(params[:id])
   end
   
   

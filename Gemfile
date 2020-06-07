@@ -75,3 +75,5 @@ gem 'kaminari'
 
 # Use ActiveStorage variant
 gem 'mini_magick'
+gem 'twitter'
+gem 'social-share-button'

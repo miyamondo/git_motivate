@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     @nickname = current_user.nickname
     # @diaries = Diary.where(user_id: current_user.id) アソシエを行う前
     @diaries = current_user.diaries.order("created_at DESC").page(params[:page]).per(5)
+    @tasks = Task.all.order("created_at DESC").page(params[:page]).per(5)
   end
   
   def edit

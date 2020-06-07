@@ -24,6 +24,9 @@
   
   <div class="container">
     <% if current_user %>
+      <%= social_share_button_tag() %>
+
+      
       <%= form_tag("/diaries/#{@diary.id}/comments", method: :post) do %>
       <textarea name="text" placeholder="コメントする"　rows="2" cols="30"></textarea>
       <input type="submit" value="SENT">

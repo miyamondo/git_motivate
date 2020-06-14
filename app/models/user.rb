@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :diaries
   has_many :comments
   has_many :tasks
+  has_many :genres
   
   def self.guest
     find_or_create_by!(email: "guest@example.com") do |user|

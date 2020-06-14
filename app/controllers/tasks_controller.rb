@@ -1,17 +1,19 @@
 class TasksController < ApplicationController
   
   def index
-    @tasks = Task.all
+    @task = Task.all
+  end
+
+  def show
+  end
+
+  def new
+    @task = Task.new
   end
   
   def create
-   Task.create(task: task_params[:task], limit_date: task_params[:limit_date], user_id: current_user.id)
-  end
-  
-  def show
-  end
-  
-  def new
+    @task = Task.create(task: task_params[:task], user_id: current_user.id)
+    # Task.create
   end
   
   def edit
@@ -19,26 +21,26 @@ class TasksController < ApplicationController
   end
   
   def update
-    task = Task.find[:id]
+    task = Task.find(params[:id])
     if task.user_id == current_user.id
-      diary.update(task_params)
+      task.update(task_edit_params)
     end
   end
   
   def destroy
-    task = Task.find[:id]
+    task = Task.find(params[:id])
     if task.user_id == current_user.id
-      diary.destroy(task_params)
+      task.destroy
     end
   end
-  
+
   private
   def task_params
-    params.permit(:task, :limit_date)
+    params.require(:task).permit(:task)
   end
   
-  
-
-
+  def task_edit_params
+    params.permit(:task)
+  end
 
 end

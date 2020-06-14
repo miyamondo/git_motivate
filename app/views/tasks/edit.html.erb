@@ -1,0 +1,9 @@
+<div class="contents row">
+  <%= form_tag("/tasks/#{@task.id}", method: :patch) do %>
+   <h3>
+     変更内容
+   </h3>
+   <textarea name="task" placeholder="タスク" rows="10" cols="30"><%= @task.task %></textarea>
+   <input type="submit" value="SENT"> 
+  <% end %>
+</div>

@@ -1,7 +1,8 @@
 class Diary < ApplicationRecord
-  belongs_to :user
-  belongs_to :genre
+  belongs_to :user,optional: true
+  belongs_to :genre,optional: true
   has_many :comments
+  
   
   attr_accessor :genre_key
   

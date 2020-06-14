@@ -11,8 +11,9 @@ class DiariesController < ApplicationController
   end
   
   def index
-    @diaries = Diary.all.order("created_at DESC").page(params[:page]).per(5)
-    @genre = Genre.all
+    @diaries = Diary.includes(:user).order("created_at DESC").page(params[:page]).per(5)
+    @users = User.all
+    @genres = Genre.all
    
   end
   
@@ -42,15 +43,15 @@ class DiariesController < ApplicationController
   end
   
   def show
+    @genre = Genre.find(params[:id])
     @diary = Diary.find(params[:id])
     @comments = @diary.comments.includes(:user)
-    @task = Task.find(params[:id])
   end
   
   
   private
   def diary_params
-    params.permit(:philosophy, :KPI, :text1, :text2)
+    params.permit(:philosophy, :KPI, :text1, :text2, :current_user.id)
   end
   
   def move_to_index

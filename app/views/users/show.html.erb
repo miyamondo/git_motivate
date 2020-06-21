@@ -5,16 +5,18 @@
   <main class="main">
     <h2 class="hidden">HOT TOPIC</h2>
     <a href="#" class="hot-topic clearfix">
-      <div class="image" style="background-image: url(%= rails_blob_path(@user.user_image.attached? ) %>)"></div>
+        <div class="image" style= "background-image: url(<%= rails_blob_path(@user.user_image ) %>)"></div>
+ 
       <div class="content">
         <h3 class="title">user_name<br><%= @user.nickname %></h3>
+        <%= render partial: "relationships/follow_button", locals: { user: @user } %>
         <p class="desc"></p>
+        
       </div>
     </a>
     
     <h2 class="heading">Daily report</h2>
     <% @diaries.each do |diary| %>
-    
       <div class="post_diarry">
         <header class="sub-hedder">
           <ul class="post-headding">

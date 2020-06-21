@@ -5,7 +5,10 @@
   <main class="main">
     <h2 class="hidden">HOT TOPIC</h2>
     <a href="#" class="hot-topic clearfix">
-        <div class="image" style= "background-image: url(<%= rails_blob_path(@user.user_image ) %>)"></div>
+        <!--<div class="image" style= "background-image: url(%= rails_blob_path(@user.user_image ) %>)"></div>-->
+        <div class="image">
+          <img src="<%= "/user_images/#{@user.image_name}" %>">
+        </div>
  
       <div class="content">
         <h3 class="title">user_name<br><%= @user.nickname %></h3>

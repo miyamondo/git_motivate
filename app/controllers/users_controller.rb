@@ -8,16 +8,24 @@ class UsersController < ApplicationController
   end
   
   def edit
+    
   end
   
   def update
-    current_user.update(update_params)
+    
+    @user = User.find_by(id: params[:id])
+    if params[:image]
+      @user.image_name = "#{@user.id}.jpg"
+      image = params[:image]
+      File.binwrite("public/user_images/#{@user.image_name}",image.read)
+    end
+    @user.update(update_params)
   end
   
   
   private
   def update_params
-    params.require(:user).permit(:nickname, :user_image)
+    params.require(:user).permit(:nickname, :image_name)
   end
   
 end

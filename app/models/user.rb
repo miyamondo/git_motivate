@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -9,11 +10,12 @@ class User < ApplicationRecord
   has_many :comments
   has_many :tasks
   has_many :genres
-  
+  mount_uploader :image, ImageUploader
   has_many :relationships
   has_many :followings, through: :relationships, source: :follow
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverse_of_relationships, source: :user
+ 
 
   def follow(other_user)
     unless self == other_user

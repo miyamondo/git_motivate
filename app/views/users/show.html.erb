@@ -20,7 +20,48 @@
     
     <h2 class="heading">Daily report</h2>
     <% @diaries.each do |diary| %>
-    <%= render partial: "diary", locals: { diary: diary } %>  <!--投稿内容部分テンプレート-->
+      <div class="post_diarry">
+        <header class="sub-hedder">
+          <ul class="post-headding">
+            <li><%= simple_time(diary.created_at) %></li>
+            <li><%= diary.user.nickname %></li>
+          </ul>
+         <% if user_signed_in? && current_user.id == diary.user_id %>
+        　 <!--<div class="more">-->
+             <ul class="more_list">
+               <li>
+                 <%= link_to "詳細", "/genres/#{diary.genre_id}/diaries/#{diary.id}", method: :get %>
+               </li>
+               <li>
+                 <%= link_to "編集", "/genres/#{diary.genre_id}/diaries/#{diary.id}/edit", method: :get %>
+               </li>
+               <li>
+                 <%= link_to "削除", "/genres/#{diary.genre_id}/diaries/#{diary.id}", method: :delete %>
+               </li>
+             </ul>
+        　 <!--</div>-->
+        　<% end %>
+        </header>
+       
+        <div class="list">
+          <p>人生の理念</p>
+          <div class="post_philosophy">
+            <%= simple_format(diary.philosophy) %>
+          </div>
+          <p>あなたの大事な目標</p>
+          <div class="post_KPI">
+            <%= simple_format(diary.KPI) %>
+          </div>
+           <p>その目標を達成するために何をした</p>
+          <div class="for">
+            <%= simple_format(diary.text1) %>
+          </div>
+          <p>明日もっと良くするために何をする</p>
+          <div class="improvement">
+            <%= simple_format(diary.text2) %>
+          </div>
+        </div>
+      </div>
 
     <% end %> <!--eachの終わり-->
     <%= paginate(@diaries) %>-

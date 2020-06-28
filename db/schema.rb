@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_21_090849) do
+ActiveRecord::Schema.define(version: 2020_06_27_134302) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -50,6 +50,15 @@ ActiveRecord::Schema.define(version: 2020_06_21_090849) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "genre_id"
+  end
+
+  create_table "genre_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "diaries_id"
+    t.bigint "genres_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["diaries_id"], name: "index_genre_tags_on_diaries_id"
+    t.index ["genres_id"], name: "index_genre_tags_on_genres_id"
   end
 
   create_table "genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -96,6 +105,8 @@ ActiveRecord::Schema.define(version: 2020_06_21_090849) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "genre_tags", "diaries", column: "diaries_id"
+  add_foreign_key "genre_tags", "genres", column: "genres_id"
   add_foreign_key "relationships", "users"
   add_foreign_key "relationships", "users", column: "follow_id"
 end

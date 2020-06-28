@@ -4,14 +4,17 @@
       <!--メイン投稿画面-->
       <main class="main">
         <h2 class="hidden">HOT TOPIC</h2>
-        <a href="#" class="hot-topic clearfix">
+        <div class = "hot-topic clearfix">
           <img class="image" src="assets/sucsess" alt=”コンテンツの写真”>
           <div class="content">
             <h3 class="title">あなたの日々の努力をシェア！<br>仲間を作って継続学習</h3>
             <p class="desc">あなただけの人生の目的を達成しよう</p>
             <time class="date" ><%= simple_time(Time.current) %></time>
           </div>
-        </a>
+        </div>
+        
+          
+       
         
         <h2 class="heading">Daily report</h2>
         <% @diaries.each do |diary| %>

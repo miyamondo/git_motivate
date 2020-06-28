@@ -12,13 +12,14 @@
  
       <div class="content">
         <h3 class="title">user_name<br><%= @user.nickname %></h3>
-        <%= render partial: "relationships/follow_button", locals: { user: @user } %>
+        
         <p class="desc"></p>
         
       </div>
     </a>
     
     <h2 class="heading">Daily report</h2>
+    <%= render partial: "relationships/follow_button", locals: { user: @user } %>
     <% @diaries.each do |diary| %>
       <div class="post_diarry">
         <header class="sub-hedder">

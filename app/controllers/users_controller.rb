@@ -26,6 +26,11 @@ class UsersController < ApplicationController
   
   
   private
+  def diary_params
+    params.permit(:philosophy, :KPI, :text1, :text2, :genre_name, :user_id)
+  end
+  
+  
   def update_params
     params.require(:user).permit(:nickname, :image)
   end

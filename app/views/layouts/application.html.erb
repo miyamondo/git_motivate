@@ -22,7 +22,7 @@
               <%= submit_tag '検索', :name => nil %>
             <% end %>
           </li>
-          <li><%= link_to "投稿する", "/genres/new" %></li>
+          <li><%= link_to "投稿する", "/diaries/new" %></li>
           <li><%= link_to "My page", "/users/#{current_user.id}" %></li>
           <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
         </ul>

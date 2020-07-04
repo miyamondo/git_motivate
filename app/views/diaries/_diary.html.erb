@@ -5,20 +5,21 @@
                 <li><%= link_to "#{diary.user.nickname}", "/users/#{diary.user_id}" %></li>
               </ul>
               <%= image_tag diary.user.image.thumb.url %>
-             <% if user_signed_in? && current_user.id == diary.user_id %>
-            　 <!--<div class="more">-->
+             
+              <!--<div class="more">-->
                  <ul class="more_list">
                    <li>
-                     <%= link_to "詳細", "/genres/#{diary.genre_id}/diaries/#{diary.id}", method: :get %>
+                     <%= link_to "詳細", "/diaries/#{diary.id}", method: :get %>
+                   </li>
+                   <% if user_signed_in? && current_user.id == diary.user_id %>
+                   <li>
+                     <%= link_to "編集", "/diaries/#{diary.id}/edit", method: :get %>
                    </li>
                    <li>
-                     <%= link_to "編集", "/genres/#{diary.genre_id}/diaries/#{diary.id}/edit", method: :get %>
-                   </li>
-                   <li>
-                     <%= link_to "削除", "/genres/#{diary.genre_id}/diaries/#{diary.id}", method: :delete %>
+                     <%= link_to "削除", "/diaries/#{diary.id}", method: :delete %>
                    </li>
                  </ul>
-            　 <!--</div>-->
+               <!--</div>-->
             　<% end %>
             </header>
            
@@ -38,6 +39,10 @@
               <p>明日もっと良くするために何をする</p>
               <div class="improvement">
                 <%= simple_format(diary.text2) %>
+              </div>
+              
+              <div class="genre">
+                <%= render_with_genres(diary.genre_name) %>
               </div>
             </div>
           </div>

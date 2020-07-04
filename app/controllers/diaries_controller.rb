@@ -13,15 +13,17 @@ class DiariesController < ApplicationController
   def index
     @diaries = Diary.includes(:user).order("created_at DESC").page(params[:page]).per(5)
     @users = User.all
-    @genres = Genre.all
-   
   end
   
+  
   def new
+    @diary = Diary.new
   end
   
   def create
-    Diary.create(philosophy: diary_params[:philosophy], KPI: diary_params[:KPI], text1: diary_params[:text1], text2: diary_params[:text2], user_id: current_user.id)
+    @diary = Diary.create(diary_params)
+    # Diary.create(philosophy: diary_params[:philosophy], KPI: diary_params[:KPI], text1: diary_params[:text1], text2: diary_params[:text2], user_id: current_user.id)
+    # redirect_to root_path
   end
   
   def destroy
@@ -43,15 +45,24 @@ class DiariesController < ApplicationController
   end
   
   def show
-    @genre = Genre.find(params[:id])
     @diary = Diary.find(params[:id])
     @comments = @diary.comments.includes(:user)
   end
   
+  def genre
+    @user = current_user
+    @genre = Genre.find_by(genre_key: params[:name])
+    @diaries = @genre.diaries.build
+    @diary = @genre.diaries.page(params[:page])
+    @comment    = Comment.new
+  end
+  
+  
+  
   
   private
   def diary_params
-    params.permit(:philosophy, :KPI, :text1, :text2, :current_user.id)
+    params.permit(:philosophy, :KPI, :text1, :text2, :genre_name, :user_id)
   end
   
   def move_to_index

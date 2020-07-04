@@ -1,22 +1,23 @@
-<div class="contents row">
-  <%= form_for :diary %>
-  
-  <div class="form-in-inner">
-    
-    <div class="form-group">
-      <h3>作成</h3>
-      <textarea name="philosophy" placeholder="理念"></textarea>
-      <textarea name="KPI" placeholder="あなたの理念に基づく目標"></textarea>
-      <textarea name="text1" placeholder="そのためにしたこと"></textarea>
-      <textarea name="text2" placeholder="もっと良くするために明日何する"></textarea>
-    </div>
-    <div class="form-group">
-      <%= f.label :ジャンル %><br />
-      <%= f.text_field :genre_key, class: "form-control" %>
-      <input type="submit" value="SEND">
-    </div>
-
-  </div>
-    
-  <% end %>
-</div>
+<%= form_for @diary do |f| %>
+   <!--<div class="form-genre">-->
+   <!--  %= f.text_field :genre_key %>-->
+   <!--</div>-->
+   <!--%= f.fields_for :diaries do |i| %>-->
+     <div class="form-group">
+       <%= f.text_field :philosophy %>
+       <br>
+       <%= f.text_field :KPI %>
+       <br>
+       <%= f.text_field :text1 %>
+       <br>
+       <%= f.text_field :text2 %>
+       <br>
+       <%= f.text_field :genre_name %>
+       <br>
+       <%= f.hidden_field :user_id, value: current_user.id %>
+     </div>
+     
+    <!--% end %>-->
+ 
+  <%= f.submit "送信" %>
+<% end %>

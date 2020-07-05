@@ -15,7 +15,7 @@
     
       <span>理念</span><%= simple_format(@diary.philosophy) %>
       <span>KPI</span><%= simple_format(@diary.KPI) %>
-      <span>そのために何をした？</span><%= simple_format(@diary.text1) %>
+      <span>そのために何をした？</span><%= simple_format(@diary.text) %>
       <span>もっと良くするために次は何をする</span><%= simple_format(@diary.text2) %>
       <span class="name">
         <%= link_to "My page", "/users/#{current_user.id}" %>

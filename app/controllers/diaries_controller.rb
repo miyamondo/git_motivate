@@ -51,12 +51,12 @@ class DiariesController < ApplicationController
   end
   
   def genre
-    @user = current
-    if paramas[:name].nil?
+    @user = current_user
+    if params[:name].nil?
       @genres = Genre.all.to_a.group_by{ |genre| genre.diaries.count}
     else
       @genre = Genre.find_by(genre_key: params[:name])
-      @diary = @genre.diary.page(params[:page]).per(20).reverse_order
+      @diary = @genre.diaries.page(params[:page]).per(20).reverse_order
       @genres = Genre.all.to_a.group_by{ |genre| genre.diaries.count}
     end
   end
@@ -64,7 +64,7 @@ class DiariesController < ApplicationController
   private
   
   def diary_params
-    params.require(:diary).permit(:philosophy, :KPI, :text1, :text2, :genre_name, genre_ids: []).merge(user_id: current_user.id)
+    params.require(:diary).permit(:philosophy, :KPI, :text, :text2, :genre_name, genre_ids: []).merge(user_id: current_user.id)
   end
   
   def move_to_index

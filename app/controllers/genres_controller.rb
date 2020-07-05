@@ -25,7 +25,7 @@ class GenresController < ApplicationController
   
   private
   def genre_params
-    params.require(:genre).permit(:genre_key, diaries_attributes: [:philosophy, :KPI, :text1, :text2, :user_id])
+    params.require(:genre).permit(:id, :genre_key, diaries_attributes: [:philosophy, :KPI, :text1, :text2, :user_id])
   end
   
 

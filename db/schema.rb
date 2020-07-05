@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2020_06_28_130534) do
   create_table "diaries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "philosophy"
     t.text "KPI"
-    t.text "text1"
+    t.text "text"
     t.text "text2"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -54,12 +54,12 @@ ActiveRecord::Schema.define(version: 2020_06_28_130534) do
   end
 
   create_table "genre_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "diaries_id"
-    t.bigint "genres_id"
+    t.bigint "diary_id"
+    t.bigint "genre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["diaries_id"], name: "index_genre_tags_on_diaries_id"
-    t.index ["genres_id"], name: "index_genre_tags_on_genres_id"
+    t.index ["diary_id"], name: "index_genre_tags_on_diary_id"
+    t.index ["genre_id"], name: "index_genre_tags_on_genre_id"
   end
 
   create_table "genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -106,8 +106,8 @@ ActiveRecord::Schema.define(version: 2020_06_28_130534) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "genre_tags", "diaries", column: "diaries_id"
-  add_foreign_key "genre_tags", "genres", column: "genres_id"
+  add_foreign_key "genre_tags", "diaries"
+  add_foreign_key "genre_tags", "genres"
   add_foreign_key "relationships", "users"
   add_foreign_key "relationships", "users", column: "follow_id"
 end

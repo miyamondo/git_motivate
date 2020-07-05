@@ -20,7 +20,7 @@ class Diary < ApplicationRecord
     diary = Diary.find_by(id: id)
     genres = diary.genre_name.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
     genres.uniq.map do |genre|
-      genre = Genre.find_or_create_by(genre_key: genre.downcase.delete("#"))
+      genre = Genre.find_or_create_by(:id, genre_key: genre.downcase.delete("#"))
       diary.genres << genre
     end
   end

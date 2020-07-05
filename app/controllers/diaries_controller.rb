@@ -1,6 +1,8 @@
 class DiariesController < ApplicationController
   
   before_action :move_to_index, except: [:index, :show, :new_guest]
+  # after_action :after_action, only: [:create]
+  
   
   def new_guest
     user = User.find_or_create_by!(email: "guest@example.com") do |user|
@@ -21,9 +23,8 @@ class DiariesController < ApplicationController
   end
   
   def create
-    @diary = Diary.create(diary_params)
-    # Diary.create(philosophy: diary_params[:philosophy], KPI: diary_params[:KPI], text1: diary_params[:text1], text2: diary_params[:text2], user_id: current_user.id)
-    # redirect_to root_path
+    Diary.create(diary_params)
+    redirect_to root_path
   end
   
   def destroy
@@ -50,23 +51,26 @@ class DiariesController < ApplicationController
   end
   
   def genre
-    @user = current_user
-    @genre = Genre.find_by(genre_key: params[:name])
-    @diaries = @genre.diaries.build
-    @diary = @genre.diaries.page(params[:page])
-    @comment    = Comment.new
+    @user = current
+    if paramas[:name].nil?
+      @genres = Genre.all.to_a.group_by{ |genre| genre.diaries.count}
+    else
+      @genre = Genre.find_by(genre_key: params[:name])
+      @diary = @genre.diary.page(params[:page]).per(20).reverse_order
+      @genres = Genre.all.to_a.group_by{ |genre| genre.diaries.count}
+    end
   end
   
-  
-  
-  
   private
+  
   def diary_params
-    params.permit(:philosophy, :KPI, :text1, :text2, :genre_name, :user_id)
+    params.require(:diary).permit(:philosophy, :KPI, :text1, :text2, :genre_name, genre_ids: []).merge(user_id: current_user.id)
   end
   
   def move_to_index
     redirect_to action: :index unless user_signed_in?
   end
+  
+
  
 end

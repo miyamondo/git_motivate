@@ -15,14 +15,7 @@ Rails.application.routes.draw do
   resources :diaries do
     resources :comments, only: [:create]
   end
-  
-  
-  
-  # resources :genres do
-  #   resources :diaries do
-  #     resources :comments, only: [:create]
-  #   end
-  # end
+
     
   resources :users, only: [:show, :edit, :update] # マイページを作成するためのルーティング
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -31,5 +24,8 @@ Rails.application.routes.draw do
   # resources :articles
 
   resources :tasks
+  # ハッシュタグのルールティング
+  get "/diaries/genre/:name" => "diaries#genre"
+  get "diaries/genre" => "diaries#genre"
   
 end

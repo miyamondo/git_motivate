@@ -1,0 +1,11 @@
+<% if params[:name] == nil %>
+
+<% else %>
+ <h3><%= @genre.genre_key %>: <% @diary.count %> 件 </h3>
+ 
+ <% @diary.each do |diary|%>
+   <%= render partial: "diaries/diary", locals: { diary: diary } %>  <!--投稿内容部分テンプレート-->
+ <% end %>
+ <%= paginate(@diaries) %>
+
+<% end %>

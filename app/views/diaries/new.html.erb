@@ -4,14 +4,19 @@
    <!--</div>-->
    <!--%= f.fields_for :diaries do |i| %>-->
      <div class="form-group">
+       <p>理念</p>
        <%= f.text_field :philosophy %>
        <br>
+       <p>KPI</p>
        <%= f.text_field :KPI %>
        <br>
+       <p>達成するために何をしたか</p>
        <%= f.text_field :text1 %>
        <br>
+       <p>もっと良くするために明日何をする？</p>
        <%= f.text_field :text2 %>
        <br>
+       <p>ジャンル</p>
        <%= f.text_field :genre_name %>
        <br>
        <%= f.hidden_field :user_id, value: current_user.id %>

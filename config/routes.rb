@@ -20,12 +20,16 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update] # マイページを作成するためのルーティング
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
-  resources :relationships, only: [:create, :destroy]
-  # resources :articles
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+  resources :follow_relationships, only: [:create, :destroy]
 
   resources :tasks
   # ハッシュタグのルールティング
   get "/diaries/genre/:name" => "diaries#genre"
-  get "diaries/genre" => "diaries#genre"
+  get "/diaries/genre" => "diaries#genre"
   
 end

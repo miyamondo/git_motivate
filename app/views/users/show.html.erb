@@ -19,7 +19,17 @@
     </a>
     
     <h2 class="heading">Daily report</h2>
-    <%= render partial: "relationships/follow_button", locals: { user: @user } %>
+    <%= link_to "フォロー(#{@user.followings.count})", following_user_path(@user), class: "nav-link" %>
+    <%= link_to "フォロワー(#{@user.followers.count})", followers_user_path(@user), class: "nav-link" %>
+    <% if user_signed_in? && @user != current_user%>
+      <div id="follow_form">
+        <% if current_user.following?(@user) %>
+             <%= render "unfollow" %>
+        <% else %>
+             <%= render "follow" %>
+        <% end %>
+      </div>
+      <% end %>
     <% @diaries.each do |diary| %>
     
      <%= render partial: "diaries/diary", locals: { diary: diary } %>  <!--投稿内容部分テンプレート-->
@@ -35,7 +45,7 @@
       <%= link_to "プロフィール編集", edit_user_path(current_user) %>
       <%= link_to "タスク作成", new_task_path %>
     </div>
-    <progress id="myProgress" value="0" max="100">0%</progress>
+
 <% end %>
     <h2 class="heading">Task</h2>
     <ul class="documents">

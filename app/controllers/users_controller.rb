@@ -24,6 +24,18 @@ class UsersController < ApplicationController
     @user.update(update_params)
   end
   
+  def following
+    @user =User.find(params[:id])
+    @users =@user.followings.page(params[:page]).per(5)
+    render 'show_following'
+  end
+
+  def followers
+    @user =User.find(params[:id])
+    @users =@user.followers.page(params[:page]).per(5)
+    render 'show_followers'
+  end
+  
   
   private
   def diary_params

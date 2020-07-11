@@ -1,0 +1,8 @@
+<div>
+  <% @users.each do |u| %>
+    <div class ="user_list">
+      <%= simple_format(u.nickname) %>
+      <%= link_to "ユーザー詳細へ", "/users/#{u.id}", method: :get %>
+    </div>
+  <% end %>
+</div>

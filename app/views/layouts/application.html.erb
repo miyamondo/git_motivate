@@ -10,11 +10,11 @@
   </head>
   <body>
     <header class="header">
-      <%= link_to image_tag('logo.png'), root_path, class: "logo" %>
+      <h1><%= link_to image_tag('logo.png'), root_path, class: "logo" %></h1>
        
      <% if user_signed_in? %>
       
-      <div class="user_nav grid-6">
+      <nav class="global-nav" >
         <ul>
           <li>
             <%= form_tag(diaries_searches_path,:method => 'get') do %>
@@ -26,9 +26,9 @@
           <li><%= link_to "My page", "/users/#{current_user.id}" %></li>
           <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
         </ul>
-      </div>
+      </nav>
     <% else %>
-     <div class="user_nav grid-6">
+     <nav class="global-nav">
        <ul>
           <li>
             <%= form_tag(diaries_searches_path,:method => 'get') do %>
@@ -40,8 +40,8 @@
          <li><%= link_to "新規登録", new_user_registration_path, class: 'post' %></li>
          <li><%= link_to 'ゲストログイン（閲覧用）', user_guest_sign_in_path, method: :post %></li>
        </ul>
- 
-     </div>
+     </nav>
+     
      <% end %> 
      </header>
 

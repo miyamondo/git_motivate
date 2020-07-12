@@ -4,10 +4,12 @@ Rails.application.routes.draw do
   }
   # post "/diaries/guest_sign_in", to: "diary#new_guest"
   devise_scope :user do
+    root "users/sessions#new"
     post "user/guest_sign_in", to: "users/sessions#new_guest"
   end
   
-  root "diaries#index" 
+  # root "top#index" 
+  # root to: "sessions#new"
   namespace :diaries do
     resources :searches, only: :index
   end

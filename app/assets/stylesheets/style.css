@@ -83,7 +83,7 @@ input.serch_btn {
 .main {
   display: block;
   float: left;
-  width: 660px;
+  width: 600px;
 }
 
 
@@ -506,7 +506,60 @@ input#diary_genre_name.form-diary{
   margin-top:10px;
 }
 
-input.comment_submit{
-  
+
+
+.user_info {
+  border: 1px solid #DDDDDD;
+  display: grid;
+  grid-template:
+  "areaA areaB"
+  "areaD areaD"
+  ;
 }
 
+.user_image {
+  grid-area: areaA;
+}
+
+.user_name {
+  grid-area: areaB;
+}
+
+.change {
+  
+  list-style: none;
+  padding-left: 0;
+}
+
+.change li{
+  margin:5px;
+}
+
+.user_introduction {
+  grid-area: areaD;
+}
+
+textarea.edit-diary{
+  width:400px;
+  height: 90px;
+  border-color: #DDDDDD;
+  border-radius: 10px;
+}
+
+.user_edit {
+  width:400px;
+  height: 90px;
+  border-color: #DDDDDD;
+  border-radius: 10px;
+}
+
+.nickname_edit {
+  width:400px;
+  height: 30px;
+  border-color: #DDDDDD;
+  border-radius: 10px;
+}
+
+.btn btn-primary {
+  padding-left: 0;
+}

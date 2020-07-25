@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   
   
   def update_params
-    params.require(:user).permit(:nickname, :image)
+    params.require(:user).permit(:nickname, :image, :introduction)
   end
   
 end

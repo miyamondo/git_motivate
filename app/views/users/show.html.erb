@@ -7,13 +7,21 @@
     
     <div class="user_info">
       <div class="user_image"><%= image_tag @user.image.thumb.url, size: '100x100' %></div>
-      <div><%= @user.nickname %></div>
-      <div></div>
+      <div class="user_name">
+      <ul class="change">
+        <li><%= @user.nickname %></li>
+        <li><%= link_to "フォロー(#{@user.followings.count})", following_user_path(@user), class: "nav-link" %></li>
+        <li><%= link_to "フォロワー(#{@user.followers.count})", followers_user_path(@user), class: "nav-link" %></li>
+        <% if current_user.id == @user.id %>
+          <li><%= link_to "プロフィール編集", edit_user_path(current_user) %></li>
+          <li><%= link_to "タスク作成", new_task_path %></li>
+        <% end %>
+      </ul>
+      </div>
+      <div class="user_introduction"><%= @user.introduction %></div>
     </div>
 
     <h2 class="heading">Daily report</h2>
-    <%= link_to "フォロー(#{@user.followings.count})", following_user_path(@user), class: "nav-link" %>
-    <%= link_to "フォロワー(#{@user.followers.count})", followers_user_path(@user), class: "nav-link" %>
     <% if user_signed_in? && @user != current_user%>
       <div id="follow_form">
         <% if current_user.following?(@user) %>
@@ -34,10 +42,6 @@
 <!--サイドメニュー-->
   <div class="sidemenu">
         <% if current_user.id == @user.id %>
-    <div class="profile_edit">
-      <%= link_to "プロフィール編集", edit_user_path(current_user) %>
-      <%= link_to "タスク作成", new_task_path %>
-    </div>
 
 <% end %>
     <h2 class="heading">Task</h2>

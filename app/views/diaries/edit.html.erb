@@ -1,13 +1,21 @@
-<div class="contents row">
-  <%= form_tag("/diaries/#{@diary.id}", method: :patch ) do %>
-    <h3>
-      編集する
-    </h3>
-    <textarea name="philosophy" placeholder="理念" rows="10" cols="30"><%= @diary.philosophy %></textarea>
-    <textarea name="KPI" placeholder="あなたの理念に基づく目標" rows="10" cols="30"><%= @diary.KPI %></textarea>
-    <textarea name="text1" placeholder="そのためにしたこと" rows="10" cols="30"><%= @diary.text %></textarea>
-    <textarea name="text2" placeholder="もっと良くするために明日何する" rows="10" cols="30"><%= @diary.text2 %></textarea>
-    <input type="submit" value="SENT">
-  <% end %>
-</div>
+<div class="new">
+    <%= form_tag("/diaries/#{@diary.id}", method: :patch, class: "form-group" ) do %>
+    <div class="new_form">
+      <p>理念</p>
+      <textarea name="philosophy" placeholder="理念" class="edit-diary"><%= @diary.philosophy %></textarea>
+      <br>
+      <p>KPI</p>
+      <textarea name="KPI" placeholder="あなたの理念に基づく目標" class="edit-diary"><%= @diary.KPI %></textarea>
+      <br>
+      <p>達成するために何をしたか</p>
+      <textarea name="text1" placeholder="そのためにしたこと"class="edit-diary"><%= @diary.text %></textarea>
+      <br>
+      <p>もっと良くするために明日何をする？</p>
+      <textarea name="text2" placeholder="もっと良くするために明日何する"class="edit-diary"><%= @diary.text2 %></textarea>
+      <br>
+      <input type="submit" value="編集完了">
+    </div>
 
+    <% end %>
+
+</div>

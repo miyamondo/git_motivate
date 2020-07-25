@@ -3,6 +3,7 @@
     <h3>
       更新が完了しました。
     </h3>
-    <a class="btn" href="/">投稿一覧へ戻る</a>
+    <!--<a class="btn" href="/">マイページへ戻る</a>-->
+    <%= link_to "My pageへ戻る", "/users/#{current_user.id}" %>
   </div>
 </div>

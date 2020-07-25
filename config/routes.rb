@@ -8,8 +8,7 @@ Rails.application.routes.draw do
     post "user/guest_sign_in", to: "users/sessions#new_guest"
   end
   
-  # root "top#index" 
-  # root to: "sessions#new"
+
   namespace :diaries do
     resources :searches, only: :index
   end

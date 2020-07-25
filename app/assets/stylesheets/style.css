@@ -17,52 +17,57 @@ a:link, a:visited, a:hover, a:active {
   text-decoration: none;
 }
 
-.header {
-  width: 100%;
-  padding:30px 4% 10px;
-  background-color: #fff;
-  box-shadow: 0 0 10px 1px #e3e3e3;
-  position: sticky;
-  top: 0;
-  display: flex;
-  align-items:center;
+/*ヘッダー*/
+header.header {
+    position: sticky;
+    top: 0;
+    background-color: #FFF;
+    box-shadow: 0 8px 3px -3px #808080;
+  display: grid;
+  grid-template:
+  "left center right"
+  / 40% 20% 40%;
 }
 
-h1{
-  margin: 0; padding:0;
+nav {
+  grid-area: left;
 }
+main{
+  grid-area: center;
+}
+
+aside{
+  grid-area: right;
+}
+aside ul {
+  display:flex;
+  
+}
+
+aside ul li {
+  text-align: center;
+  margin: 10px;
+ list-style: none;
+}
+
 
 a {
   text-decoration: none;
    color: #4b4b4b;
 }
 
-.global-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-} 
 
-.global-nav li {
-  margin:0 0 0 15px;
-  font-size:14px;
-  padding-top: 4px;
+
+
+
+input#search {
+  width: 70%;
+  margin-top: 20px;
 }
 
-nav {
-  margin: 0 0 0 auto;
+input.serch_btn {
+  width: 30px;
 }
-
-
-.global-nav li:hover{
-  background-color: #FFCC99	;
-  color: #fff;
-}
-.global-nav li{
-  transition: 0.15s;
-}
-
 
 .wrapper {
   width: 970px;
@@ -80,6 +85,8 @@ nav {
   float: left;
   width: 660px;
 }
+
+
 
 .hot-topic {
   display: block;
@@ -145,16 +152,53 @@ nav {
 }
 
 /*投稿一覧*/
+.post_diary {
+  border: 1px solid #DDDDDD;
+  margin-bottom: 10px;
+  display: grid;
+  grid-template:
+    "image_header sub_header"
+    "post_main   post_main"
+  ;
+}
+
+
+.image_header {
+  grid-area: image_header;
+  margin-left: 30px;
+  border-radius: 10px;
+}
+
+.sub_header {
+  grid-area: sub_header;
+}
+
+ul.post-headding {
+  list-style: none;
+  display: flex;
+}
+
+.post-headding a{
+  margin-right: 20px;
+}
+
+ul.more_list {
+  list-style: none;
+  display: flex;
+}
 
 .more_list li{
- display: inline-block;
- margin:5px;
+  margin-right:20px;
 }
 
-.more_list {
-  float:right;
+.image_bottom {
+  grid-area: clear;
 }
 
+.list {
+  grid-area: post_main;
+  margin:20px;
+}
 
 
 .heading {
@@ -164,36 +208,26 @@ nav {
   font-size:1.6rem;
 }
 
-.post_diarry {
-  border: 1px solid #aaa;
-  margin-bottom: 10px;
-  
-}
-.list {
-  margin:20px;
-}
+
 
 .post_philosophy {
-  border: 1px solid #aaa;
+  border: 1px solid #DDDDDD;
   margin:10px;
 }
 
 .post_KPI{
-  border: 1px solid #aaa;
+  border: 1px solid #DDDDDD;
   margin:10px;
 }
 
 .for {
-  border: 1px solid #aaa;
+  border: 1px solid #DDDDDD;
   margin:10px;
 }
 .improvement {
-  border: 1px solid #aaa;
+  border: 1px solid #DDDDDD;
   margin:10px;
 }
-
-
-
 
 
 /*サイドメニューのCSS*/
@@ -228,8 +262,6 @@ nav {
   line-height: 1.5;
   
 }
-
-
 
 
 
@@ -336,39 +368,145 @@ documents > li ul > li {
 .serch-box .text {
   margin-top: 12px;
 }
-/*ヘッダー*/
-/*header.header {*/
-/*  height:90px;*/
-/*  border:2px soled ;*/
-/*  background-color: #383634;*/
+/*ログイン画面のCSS*/
+
+.login_back {
+    background: image-url("bg.jpg") no-repeat center center;
+    /*background-size: cover;*/
+    /*position: fixed;*/
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    margin-top: 10px;
+    height: 400px;
+}
+
+
+    
+
+    /*input[type=email],*/
+    /*input[type=password],*/
+    /*input[type=submit] {*/
+    /*  width: 100%;*/
+    /*  margin: 10px 0;*/
+    /*}*/
+.log-in {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 30%;
+  min-width: 400px;
+  height: 640px;
+    }
+.log-in-inner {
+        border-radius: 5px;
+        background-color: rgba(#fff,0.93);
+        box-shadow: 0 3px 5px rgba(#000,.1);
+    }
+
+.log-in-inner h3:hover{
+  background-color: #FFCC99	;
+  color: #fff;
+  transition: 0.15s;
+}
+
+.log-in-inner .registrations_link :hover{
+  background-color: #FFCC99	;
+  color: #fff;
+  transition: 0.15s;
+}
+
+/*タスク作成系*/
+
+.new_task{
+
+}
+
+input#task_task{
+  margin: 30px auto;
+}
+
+
+
+textarea#diary_philosophy.form-diary{
+  width:400px;
+  height: 80px;
+  border-color: #DDDDDD;
+  border-radius: 10px;
+  margin-left: 5px;
+}
+
+textarea#diary_KPI.form-diary{
+  width:400px;
+  height: 80px;
+  border-color: #DDDDDD;
+  border-radius: 10px;
+  margin-left: 5px;
+
+}
+
+textarea#diary_text.form-diary{
+  width:400px;
+  height: 80px;
+  border-color: #DDDDDD;
+  border-radius: 10px;
+  margin-left: 5px;
+}
+
+textarea#diary_text2.form-diary{
+  width:400px;
+  height: 80px;
+  border-color: #DDDDDD;
+  border-radius: 10px;
+  margin-left: 5px;
+
+}
+
+
+input#diary_genre_name.form-diary{
+  width:400px;
+  height: 30px;
+  border-color: #DDDDDD;
+  border-radius: 10px;
+}
+
+
+  input[type="submit"] {
+    border-radius: 10px;
+    color: #fff;
+    border: 0;
+    font-size: 18px;
+    background-color: #FA8072;
+  }
   
-/*}*/
+.new_form {
+  width: 500px;
+  border:3px solid;
+  border-color: #DDDDDD;
+  border-radius: 5px;
+  margin: 10px auto;
+  
+}
 
-/*h1.grid-6 {*/
-/*  font-size: 30px;*/
-/*  float: left;*/
-/*  border: 1px solid;*/
-/*}*/
+.container {
+  margin-left: 10px;
+}
 
-/*a {*/
-/*    text-decoration:none;*/
-/*    color:#C0C0C0;*/
-/*}*/
+.form_comment{
+  list-style: none;
+  padding-left: 0;
+}
 
-/*div.grid-6 {*/
-/*  float: right;*/
-/*  border: 1px solid;*/
-/*  line-height: 40px;*/
-/*  margin:20px;*/
-/*}*/
+.comment_text {
+  margin-top:10px;
+}
 
+input.comment_submit{
+  
+}
 
-/*フッター*/
-/*footer.footer {*/
-/*  background-color: #383634;*/
-/*  height: 90px;*/
-/*}*/
-
-/*footer p{*/
-/*  color: #FFF;*/
-/*}*/

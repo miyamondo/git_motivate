@@ -13,16 +13,14 @@
         <!--  </div>-->
         <!--</div>-->
         
-          
-       
-        
+
         <h2 class="heading">Daily report</h2>
         <% @diaries.each do |diary| %>
         
         <%= render partial: "diary", locals: { diary: diary } %>  <!--投稿内容部分テンプレート-->
 
         <% end %> <!--eachの終わり-->
-        <%= paginate(@diaries) %>-
+        <%= paginate(@diaries) %>
       </main>
 
 <!--サイドメニュー-->

@@ -3,10 +3,10 @@
     <!--%= render partial: 'common/login_logo' %>-->
     
     <div class="log-in-inner">
-      <% unless user_signed_in? %>
-      <h2><%= link_to 'ゲストログイン（閲覧用）', user_guest_sign_in_path, method: :post%></h2>
-      <% end %>
+      
       <h2>ログイン</h2>
+      <h3><%= link_to 'ゲストログイン（閲覧用）', user_guest_sign_in_path, method: :post%></h2>
+      
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       
         <div>
@@ -28,6 +28,7 @@
         
         <div>
           <%= f.submit class: "btn btn-primary withripple", value: "ログイン" %>
+          
         </div>
       <% end %>
       

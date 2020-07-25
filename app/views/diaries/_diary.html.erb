@@ -1,10 +1,11 @@
-          <div class="post_diarry">
-            <header class="sub-hedder">
+          <div class="post_diary">
+            <div class="sub-hedder">
               <ul class="post-headding">
-                <li><%= simple_time(diary.created_at) %></li>
                 <li><%= link_to "#{diary.user.nickname}", "/users/#{diary.user_id}" %></li>
+                <li><%= simple_time(diary.created_at) %></li>
+                
               </ul>
-              <%= image_tag diary.user.image.thumb.url %>
+              
              
               <!--<div class="more">-->
                  <ul class="more_list">
@@ -21,7 +22,12 @@
                  </ul>
                <!--</div>-->
             　<% end %>
-            </header>
+            </div><!--サブヘッダーのdivのend-->
+            <div class="image_header">
+              <%= image_tag diary.user.image.thumb.url, size: '100x100' %>
+            </div>
+            
+            <div class="image_bottom"></div>
             
             <div class="list">
               <p>人生の理念</p>

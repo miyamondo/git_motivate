@@ -10,39 +10,41 @@
   </head>
   <body>
     <header class="header">
-      <h1><%= link_to image_tag('logo.png'), root_path, class: "logo" %></h1>
-       
-     <% if user_signed_in? %>
+      <nav><%= link_to image_tag('logo.png'), root_path, class: "logo" %></nav>
       
-      <nav class="global-nav" >
-        <ul>
-          <li>
-            <%= form_tag(diaries_searches_path,:method => 'get') do %>
+      <% if user_signed_in? %>
+      <main>
+        
+        <%= form_tag(diaries_searches_path,:method => 'get', class: "serch") do %>
               <%= text_field_tag :search %>
-              <%= submit_tag '検索', :name => nil %>
-            <% end %>
-          </li>
+              <%= submit_tag '検索', :name => nil, :class=>"search_btn" %>
+        <% end %>
+      </main>
+      
+      <aside>
+        <ul>
           <li><%= link_to "投稿する", "/diaries/new" %></li>
           <li><%= link_to "My page", "/users/#{current_user.id}" %></li>
           <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
         </ul>
-      </nav>
-    <% else %>
-     <nav class="global-nav">
-       <ul>
-          <li>
-            <%= form_tag(diaries_searches_path,:method => 'get') do %>
-              <%= text_field_tag :search %>
-              <%= submit_tag '検索', :name => nil %>
-            <% end %>
-          </li>
-         <li><%= link_to "ログイン", new_user_session_path, class: 'post' %></li>
-         <li><%= link_to "新規登録", new_user_registration_path, class: 'post' %></li>
-         <li><%= link_to 'ゲストログイン（閲覧用）', user_guest_sign_in_path, method: :post %></li>
-       </ul>
-     </nav>
+
+      </aside>
+    <% end %>
+     <!--<nav class="global-nav">-->
+     <!--  <ul>-->
+     <!--     <li>-->
+     <!--       <%= form_tag(diaries_searches_path,:method => 'get') do %>-->
+     <!--         <%= text_field_tag :search %>-->
+     <!--         <%= submit_tag '検索', :name => nil %>-->
+     <!--       <% end %>-->
+     <!--     </li>-->
+     <!--    <li><%= link_to "ログイン", new_user_session_path, class: 'post' %></li>-->
+     <!--    <li><%= link_to "新規登録", new_user_registration_path, class: 'post' %></li>-->
+     <!--    <li><%= link_to 'ゲストログイン（閲覧用）', user_guest_sign_in_path, method: :post %></li>-->
+     <!--  </ul>-->
+     <!--</nav>-->
      
-     <% end %> 
+     <!--% end %> -->
      </header>
 
     <%= yield %>

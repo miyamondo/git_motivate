@@ -1,9 +1,10 @@
-<div class="contents row">
-  <%= form_for @task, url: "/tasks" do |f| %>
-  <%= f.text_field :task,  placeholder: 'タスク'%>
-    
-    <%= f.submit "送信" %>
-  <% end %>
-  
+<div class="new_task">
+ 
+    <%= form_for @task, url: "/tasks", html: {class: "task_form"} do |f|  %>
+    <%= f.text_field :task, class: "task_create",  placeholder: 'タスク'%>
+      
+      <%= f.submit "作成" %>
+    <% end %>
+
   
 </div>

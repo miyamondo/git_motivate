@@ -4,20 +4,13 @@
   <!--メイン投稿画面-->
   <main class="main">
     <h2 class="hidden">HOT TOPIC</h2>
-    <a href="#" class="hot-topic clearfix">
-        <!--<div class="image" style= "background-image: url(%= rails_blob_path(@user.user_image ) %>)"></div>-->
-        <div class="image">
-          <%= image_tag @user.image.thumb.url %>
-        </div>
- 
-      <div class="content">
-        <h3 class="title">user_name<br><%= @user.nickname %></h3>
-        
-        <p class="desc"></p>
-        
-      </div>
-    </a>
     
+    <div class="user_info">
+      <div class="user_image"><%= image_tag @user.image.thumb.url, size: '100x100' %></div>
+      <div><%= @user.nickname %></div>
+      <div></div>
+    </div>
+
     <h2 class="heading">Daily report</h2>
     <%= link_to "フォロー(#{@user.followings.count})", following_user_path(@user), class: "nav-link" %>
     <%= link_to "フォロワー(#{@user.followers.count})", followers_user_path(@user), class: "nav-link" %>
@@ -35,7 +28,7 @@
      <%= render partial: "diaries/diary", locals: { diary: diary } %>  <!--投稿内容部分テンプレート-->
     
     <% end %> <!--eachの終わり-->
-    <%= paginate(@diaries) %>-
+    <%= paginate(@diaries) %>
   </main>
 
 <!--サイドメニュー-->

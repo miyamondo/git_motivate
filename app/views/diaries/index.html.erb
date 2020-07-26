@@ -27,14 +27,18 @@
       <div class="sidemenu">
         <h2 class="heading">Genre</h2>
         <ul class="documents">
-          
+            <% @genre.each do |genre| %>
+                    <p><%= link_to "##{genre.genre_key}", "/diaries/genre/#{genre.genre_key}",data: {"turbolinks" => false} %>
+                    </p>
+              
+            <% end %>            
+            
+            
             <li>
-              <h3 class="title">ranking</h3>
-              
+            
               <ul>
-              
               </ul>
-               
+          
             </li>
         </ul>
       </div>

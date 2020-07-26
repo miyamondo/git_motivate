@@ -15,6 +15,7 @@ class DiariesController < ApplicationController
   def index
     @diaries = Diary.includes(:user).order("created_at DESC").page(params[:page]).per(5)
     @users = User.all
+    @genre = Genre.all
   end
   
   

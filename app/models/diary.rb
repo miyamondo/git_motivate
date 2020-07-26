@@ -10,7 +10,7 @@ class Diary < ApplicationRecord
   
   def self.search(search)
     if search
-      Diary.where(['text1 LIKE ?',"%#{search}%"])
+      Diary.where(['text LIKE ?',"%#{search}%"])
     else
       Diary.all
     end

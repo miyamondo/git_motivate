@@ -563,3 +563,60 @@ textarea.edit-diary{
 .btn btn-primary {
   padding-left: 0;
 }
+
+/*フォロー一覧のCSS*/
+.user_list {
+  width:500px;
+  margin: 10px auto;
+  border:1px solid #DDDDDD;
+  display: grid;
+  grid-template-rows: 60px 100px;
+  grid-template-columns: 60px 1fr;
+  grid-template-areas:
+  "areaA areaB"
+  "areaA areaC"
+  ;
+}
+
+.follow_image {
+  grid-area: areaA;
+}
+
+.follow_name {
+  grid-area: areaB;
+  text-align: center;
+}
+
+.follow_introduction {
+  grid-area: areaC;
+}
+
+/*検索画面*/
+.search_diary {
+  width:500px;
+  margin: 10px auto;
+  border:1px solid #DDDDDD;
+  display: grid;
+  grid-template:
+    "image_header sub_header"
+    "post_main   post_main"
+  ;
+}
+
+.serch_list{
+  text-align: center;
+  font-size: 20px;
+}
+
+.show_diary {
+  width:500px;
+  margin: 10px auto;
+  border:1px solid #DDDDDD;
+  display: grid;
+  grid-template:
+    "image_header sub_header"
+    "post_main   post_main"
+  ;
+}
+
+

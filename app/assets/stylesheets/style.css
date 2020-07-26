@@ -616,4 +616,7 @@ textarea.edit-diary{
   ;
 }
 
-
+.genre_diary {
+  width:500px;
+  margin: 10px auto;
+}

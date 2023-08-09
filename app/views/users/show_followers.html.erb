@@ -1,9 +1,0 @@
-<div>
-  <% @users.each do |u| %>
-    <div class ="user_list">
-      <div class="follow_image"><%= image_tag u.image.thumb.url, size: '60x60' %></div>
-      <h4 class="follow_name"><%= link_to "#{u.nickname}", "/users/#{u.id}", method: :get %></h4>
-      <div class="follow_introduction"><%="#{u.introduction}"%></div>
-    </div>
-  <% end %>
-</div>
